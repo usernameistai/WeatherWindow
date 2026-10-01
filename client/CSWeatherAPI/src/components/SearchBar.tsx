@@ -27,6 +27,7 @@ const SearchBar = ({onSearch}: SearchBarProps) => {
         <label htmlFor="search" className="sr-only">Search City</label>
         <input 
           type="search"
+          enterKeyHint="search"
           value={search}
           name="search"
           id="search"

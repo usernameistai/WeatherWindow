@@ -36,21 +36,21 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
       case id >= 500 && id < 600: 
         return `It's cold and expect some ${description}`;
       case id >= 600 && id < 700: 
-        return `Looks like there will be some ${description} in the atmosphere`;
+        return `Looks like there will be some ${description} today`;
       case id >= 700 && id < 800: 
-       return `Looks like there's some ${description} occurring in the atmosphere, hopefully the sun will shine through!!`;
+       return `Looks like there's some ${description} occurring in the atmosphere, hopefully you will survive!!`;
       case id >= 801 && id <= 804: 
-        return `Looks like there's some ${description} overhead, hopefully the sun will shine through!!`;
+        return `Clouds - ${description} overhead, hopefully the sun will shine through!!`;
       default:
         return "Looks like a fine and sunny day!!!";
     }
   })();
   const flexRow = "flex flex-row gap-2";
-  const details = "mb-4 bg-white/10 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none rounded-lg px-4 py-2 sm:px-0 sm:py-0";
-  const detailBulk = "relative right-0 sm:right-20 w-full bg-white/10 hover:bg-white/25 backdrop-blur-md rounded-lg px-4 py-2 transition-all duration-200";
+  const details = "mb-4 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none rounded-lg px-4 py-2 sm:px-0 sm:py-0";
+  const detailBulk = "relative right-0 sm:right-20 w-full hover:bg-white/25 backdrop-blur-md rounded-lg px-4 py-2 transition-all duration-200";
   const relLeft = "relative -left-2 sm:left-0";
   const relLeft1 = "relative -left-1.5 sm:left-0";
-
+// 
   return (
     <>
       <div className='flex justify-between items-center mb-2 mx-2 text-[#06b6d4] text-[10px] sm:text-[12px] font-mono tracking-wider'>
@@ -83,7 +83,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
           )}
         </div>
 
-        <section className="flex flex-col sm:flex-row justify-between z-50 font-semibold mb-25">
+        <section className="flex flex-col items-center sm:flex-row sm:items-start justify-between z-50 font-semibold mb-25">
           <section aria-label="Main Variables" className="relative flex-1 text-left ml-4 space-y-35 lg:left-3">
             <div aria-label="Location" 
               className={`${relLeft} flex justify-start gap-2 mb-1 ${cityCountrySide === "city" ? "backdrop-blur-md rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%]" : ""}`}
@@ -139,7 +139,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             </div>
           </section>
           
-          <section aria-label="Detailed Variables" className="relative w-70 mt-2 left-7 sm:left-25 lg:left-0 font-semibold tracking-wide text-white md:text-zinc-800/80">
+          <section aria-label="Detailed Variables" className="relative w-full sm:left-20 lg:left-0 max-w-xs sm:w-70 mt-4 sm:mt-2 font-semibold tracking-wide text-white md:text-zinc-800/80">
             <details aria-label="Atmospheric Details" className={`${relLeft1} ${details}`}>
               <summary className={`${flexRow} cursor-pointer text-lg font-bold`}><CloudSunIcon className="text-sky-300"/>Atmospheric</summary>
               <div className={`${detailBulk}`}>

@@ -19,16 +19,16 @@ const Nav = ({ children }: {children: ReactNode}) => {
             <img 
               src="./weatherwindow-cropped.webp" 
               alt="Weather Window Icon"
-              className="relative left-2 w-12.5"
+              className="relative left-2 w-11 sm:w-12.5"
             />
-            <span className="relative hidden sm:flex left-5 tracking-wide">Weather Window</span>
+            <span className="relative hidden sm:flex left-0 sm:left-5 tracking-wide">Weather Window</span>
           </div>
             
-          <div className="flex justify-center items-center w-ful">
+          <div className="flex justify-center items-center w-full">
             {children}  
           </div>
           
-          <div className="relative right-2 flex flex-row gap-1 justify-end">
+          <div className="relative right-2 flex flex-row gap-1 justify-end scale-95 sm:scale-100">
             <button
               onClick={() => setCityCountrySide(cityCountrySide === 'country' ? 'city' : 'country')}
               className="flex items-center gap-2.5 bg-slate-200/80 dark:bg-slate-950/80 border border-cyan-500/30 px-3.5 py-1.5 rounded-2xl shadow-[0_0_10px_rgba(6,182,212,0.15)] cursor-pointer"
