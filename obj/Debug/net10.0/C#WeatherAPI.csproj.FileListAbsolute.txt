@@ -71,3 +71,4 @@ C:\Users\David\Desktop\Projects\CSWeatherAPI\obj\Debug\net10.0\C#WeatherAPI.genr
 C:\Users\David\Desktop\Projects\CSWeatherAPI\obj\Debug\net10.0\ref\C#WeatherAPI.dll
 C:\Users\David\Desktop\Projects\CSWeatherAPI\bin\Debug\net10.0\client\CSWeatherAPI\components.json
 C:\Users\David\Desktop\Projects\CSWeatherAPI\bin\Debug\net10.0\client\CSWeatherAPI\src\utils\uk-counties.json
+C:\Users\David\Desktop\Projects\CSWeatherAPI\obj\Debug\net10.0\C#WeatherAPI.sourcelink.json

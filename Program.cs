@@ -11,19 +11,21 @@ builder.Services.AddHttpClient();
 builder.Services.AddCors(options =>
 {
     // options.AddDefaultPolicy(policy =>
-    options.AddPolicy("ViteDevServer", policy => 
+    options.AddPolicy("WeatherWindow", policy => 
     {
-        policy.WithOrigins("http://localhost:5173") // Added form BG
+        policy.WithOrigins(
+            "http://localhost:5173",
+            "https://theweatherwindow.netlify.app"
+            ) // Added form BG
              .AllowAnyHeader()
              .AllowAnyMethod();
-            //  .AllowAnyOrigin();
     });
 });
 
 var app = builder.Build();
 
 // app.UseCors();
-app.UseCors("ViteDevServer"); // added by BG
+app.UseCors("WeatherWindow"); // added by BG
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
