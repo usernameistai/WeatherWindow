@@ -48,6 +48,8 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
   const flexRow = "flex flex-row gap-2";
   const details = "mb-4 bg-white/10 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none rounded-lg px-4 py-2 sm:px-0 sm:py-0";
   const detailBulk = "relative right-0 sm:right-20 w-full bg-white/10 hover:bg-white/25 backdrop-blur-md rounded-lg px-4 py-2 transition-all duration-200";
+  const relLeft = "relative -left-2 sm:left-0";
+  const relLeft1 = "relative -left-1.5 sm:left-0";
 
   return (
     <>
@@ -84,7 +86,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         <section className="flex flex-col sm:flex-row justify-between z-50 font-semibold mb-25">
           <section aria-label="Main Variables" className="relative flex-1 text-left ml-4 space-y-35 lg:left-3">
             <div aria-label="Location" 
-              className={`flex justify-start gap-2 mb-1 ${cityCountrySide === "city" ? "backdrop-blur-md rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%]" : ""}`}
+              className={`${relLeft} flex justify-start gap-2 mb-1 ${cityCountrySide === "city" ? "backdrop-blur-md rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%]" : ""}`}
             >
               <div className={`${cityCountrySide === "city" ? "text-white" : ""} tracking-wider`}>
                 <span className="text-3xl sm:text-4xl">{location?.name}</span>, 
@@ -103,11 +105,11 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
               </div>
             </div>
 
-            <div aria-label="Country" className={`flex gap-5 mb-10 font-bold tracking-wider ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 w-[40%] sm:w-[35%] lg:w-[25%]" : ""}`}>
+            <div aria-label="Country" className={`${relLeft} flex gap-5 mb-10 font-bold tracking-wider ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 w-[40%] sm:w-[35%] lg:w-[25%]" : ""}`}>
               <span>{location?.country}</span><span className="text-zinc-800/80">{simpleTime()}</span>
             </div>
             
-            <div aria-label="Temperature" className={`flex flex-row items-center ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%]" : ""}`}>
+            <div aria-label="Temperature" className={`${relLeft} flex flex-row items-center ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%]" : ""}`}>
               <div className="text-6xl sm:text-7xl">{weather?.list[0].main.temp.toFixed(1)}°</div>
               <div className="mx-5 hover:bg-white/10 hover:backdrop-blur-sm hover:rounded-xl hover:shadow-xl px-4 py-2 ">
                 <div className="text-base sm:text-lg text-zinc-800/80">Feels like {weather?.list[0].main.feels_like.toFixed(1)}°</div>
@@ -123,7 +125,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             </div>
 
             <div aria-label="Weather Status" 
-              className={`flex flex-row font-bold rounded-lg mb-4 bg-white/10 backdrop-blur-md  
+              className={`${relLeft} flex flex-row font-bold rounded-lg mb-4 bg-white/10 backdrop-blur-md  
                 px-4 py-2 sm:py-0 sm:w-[80%] lg:w-[35%] ${
                 cityCountrySide === "city" ? "text-white bg-white/10 backdrop-blur-md rounded-lg px-4" : ""
               }`}
@@ -138,7 +140,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
           </section>
           
           <section aria-label="Detailed Variables" className="relative w-70 mt-2 left-7 sm:left-25 lg:left-0 font-semibold tracking-wide text-white md:text-zinc-800/80">
-            <details aria-label="Atmospheric Details" className={`${details}`}>
+            <details aria-label="Atmospheric Details" className={`${relLeft1} ${details}`}>
               <summary className={`${flexRow} cursor-pointer text-lg font-bold`}><CloudSunIcon className="text-sky-300"/>Atmospheric</summary>
               <div className={`${detailBulk}`}>
                 <div className={flexRow}><CloudIcon className="text-sky-300"/>  Cover: <div>{weather?.list[0].clouds.all}%</div></div>
@@ -158,7 +160,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
               </div>
             </details>
 
-            <details aria-label="Wind Details" className={`${details}`}>
+            <details aria-label="Wind Details" className={`${relLeft1} ${details}`}>
               <summary className={`${flexRow} cursor-pointer text-lg font-bold`}>
                 <WindIcon className="text-green-300"/> Wind 
                 <LuTrees size={24} className="text-green-300"/>
@@ -173,7 +175,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
               </div>
             </details>
 
-            <details aria-label="Day or Night and Visibility" className={`${details}`}>
+            <details aria-label="Day or Night and Visibility" className={`${relLeft1} ${details}`}>
               <summary className={`${flexRow} text-lg font-bold`}>
                 {weather?.list[0].sys.pod === "d" ? <SunIcon className="text-yellow-300"/> : <MoonStarIcon className="text-yellow-200"/>}
                 Light
@@ -185,7 +187,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
               </div>
             </details>
 
-            <details aria-label="UV Index" className={`${details}`}>
+            <details aria-label="UV Index" className={`${relLeft1} ${details}`}>
               <summary className={`${flexRow} text-lg font-bold`}><AudioWaveform className="text-yellow-300"/><span>UV-Index</span><span className="">{uvi?.now?.uvi}</span></summary>
               <div className={`${detailBulk}`}>
                 <UVAdvice uvi={uvi?.now?.uvi} />
@@ -197,7 +199,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         <section aria-label="Weather Warning" className="z-999 items-center text-center mx-auto w-full">
           {weatherAlert && (
             <div className={
-              `my-2 p-3 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-xs text-lg font-semibold tracking-wide 
+              `my-2 p-3 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-xs text-base sm:text-lg font-semibold tracking-wide 
               ${cityCountrySide === "city" ? "text-white" : "text-zinc-800/80"}
               `}
             >
