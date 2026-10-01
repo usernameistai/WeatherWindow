@@ -7,7 +7,7 @@ import type {
 } from "./weather";
 import { keepPreviousData, useQueries, useQuery } from "@tanstack/react-query";
 
-const BASE = `http://localhost:5033`;
+const BASE = import.meta.env.VITE_API_URL || `http://localhost:5033`;
 
 const fetchWeather = async <T,>( url: string, signal: AbortSignal ): Promise<T> => {
   const res = await axios.get<T>(url, { signal });
