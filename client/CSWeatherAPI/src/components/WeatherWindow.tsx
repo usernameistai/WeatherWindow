@@ -109,7 +109,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
               <span>{location?.country}</span><span className="text-zinc-800/80">{simpleTime()}</span>
             </div>
             
-            <div aria-label="Temperature" className={`${relLeft} flex flex-row items-center ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%]" : ""}`}>
+            <div aria-label="Temperature" className={`${relLeft} flex flex-row items-center ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[55%]" : ""}`}>
               <div className="text-6xl sm:text-7xl">{weather?.list[0].main.temp.toFixed(1)}°</div>
               <div className="mx-5 hover:bg-white/10 hover:backdrop-blur-sm hover:rounded-xl hover:shadow-xl px-4 py-2 ">
                 <div className="text-base sm:text-lg text-zinc-800/80">Feels like {weather?.list[0].main.feels_like.toFixed(1)}°</div>
@@ -125,9 +125,9 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             </div>
 
             <div aria-label="Weather Status" 
-              className={`${relLeft} flex flex-row font-bold rounded-lg mb-4 bg-white/10 backdrop-blur-md  
-                px-4 py-2 sm:py-0 sm:w-[80%] lg:w-[35%] ${
-                cityCountrySide === "city" ? "text-white bg-white/10 backdrop-blur-md rounded-lg px-4" : ""
+              className={`${relLeft} flex flex-row font-bold rounded-lg mb-4 backdrop-blur-sm  
+                px-4 py-2 sm:py-0 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[35%] ${
+                cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4" : ""
               }`}
             >
               <img 
@@ -199,7 +199,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         <section aria-label="Weather Warning" className="z-999 items-center text-center mx-auto w-full">
           {weatherAlert && (
             <div className={
-              `my-2 p-3 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-xs text-base sm:text-lg font-semibold tracking-wide 
+              `my-2 p-3 rounded-xl hover:bg-white/35 backdrop-blur-xs text-base sm:text-lg font-semibold tracking-wide 
               ${cityCountrySide === "city" ? "text-white" : "text-zinc-800/80"}
               `}
             >

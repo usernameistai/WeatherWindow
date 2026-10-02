@@ -128,15 +128,12 @@ function WeatherMap({ className }: ClassNameProps) {
               <path
                 key={index}
                 d={pathGenerator(feature) || undefined} 
-                // fill="#0f172a"       
-                // stroke="#164e63"    
-                // strokeWidth={0.8}
                 fill={hoveredData?.county.toLowerCase() === countyName.toLowerCase() ? "#1e3a8a" : "#0f172a"}       
-    stroke={hoveredData?.county.toLowerCase() === countyName.toLowerCase() ? "#06b6d4" : "#164e63"}    
-    strokeWidth={hoveredData?.county.toLowerCase() === countyName.toLowerCase() ? 1.5 : 0.8}
+                stroke={hoveredData?.county.toLowerCase() === countyName.toLowerCase() ? "#06b6d4" : "#164e63"}    
+                strokeWidth={hoveredData?.county.toLowerCase() === countyName.toLowerCase() ? 1.5 : 0.8}
                 style={{ transition: "fill 0.15s ease, stroke 0.15s ease", cursor: "pointer" }}
                 onMouseEnter={(e) => {
-                  d3.select(e.currentTarget).attr("fill", "#1e3a8a").attr("stroke", "#06b6d4").attr("stroke-width", "1.5");
+                  // d3.select(e.currentTarget).attr("fill", "#1e3a8a").attr("stroke", "#06b6d4").attr("stroke-width", "1.5");
                   
                   if (matchedCities && matchedCities.length > 0) {
                     const [lon, lat] = matchedCities[0].coordinates;
@@ -157,8 +154,8 @@ function WeatherMap({ className }: ClassNameProps) {
                     }
                   }
                 }}
-                onMouseLeave={(e) => {
-                  d3.select(e.currentTarget).attr("fill", "#0f172a").attr("stroke", "#164e63").attr("stroke-width", "0.8");
+                onMouseLeave={() => { // removed e from parameter
+                  // d3.select(e.currentTarget).attr("fill", "#0f172a").attr("stroke", "#164e63").attr("stroke-width", "0.8");
                   setHoveredData(null);
                 }}
                 onClick={(e) => {
@@ -232,8 +229,8 @@ function WeatherMap({ className }: ClassNameProps) {
           backdropFilter: "blur(4px)",
           minWidth: "150px"
         }}>
-          <div style={{ fontSize: "10px", color: "#94a3b8", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>
-            SECTOR: {hoveredData.county}
+          <div style={{ color: "#94a3b8", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "2px" }}>
+            {hoveredData.county}
           </div>
 
           {hoveredData.cities.map((city, idx) => (
