@@ -94,7 +94,7 @@ function WeatherMap({ className }: ClassNameProps) {
       </div>
 
       <svg 
-        viewBox={`0 0 ${width} ${height}`}
+        viewBox={`-25 -25 ${width + 50} ${height + 50}`}
         width="100%" 
         style={{ 
           background: "#030712", 
