@@ -88,8 +88,8 @@ function WeatherMap({ className }: ClassNameProps) {
   return (
     <div className={className} style={{ position: "relative", width: "100%", maxWidth: `${width}px`, margin: "0 auto", fontFamily: "monospace" }}>
       
-      <div className="text-[10px] sm:text-[12px]" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px", color: "#06b6d4", letterSpacing: "2px" }}>
-        <span>// SECURE SECTOR: UK-MET-GRID</span>
+      <div className="flex justify-between items-center mb-2 tracking-[2px] text-[10px] sm:text-[12px] font-semibold text-zinc-700/80 dark:text-[#06b6d4]">
+        <span>// SECTOR: UK-MET-GRID</span>
         <span>STATUS: COUNTY_CITY</span>
       </div>
 

@@ -55,8 +55,8 @@ const WeatherChart = ({ data, location }: { data : WeatherDataItem[] | null, loc
   return (
     <>
       <div className='pt-0 mx-auto items-center max-w-6xl p-5'>
-        <div className='flex justify-between items-center mb-2 text-[#06b6d4] text-[10px] sm:text-[12px] font-mono tracking-wider'>
-          <span className='uppercase'>// SECURE SECTOR: {location?.[0]?.name}-WEATHER-CHART</span>
+        <div className='flex justify-between items-center mb-2 font-semibold text-zinc-700/80 dark:text-[#06b6d4] text-[10px] sm:text-[12px] font-mono tracking-[2px]'>
+          <span className='uppercase'>// SECTOR: {location?.[0]?.name}-WEATHER-CHART</span>
           <span>STATUS: 3HOUR_CHECK</span>
         </div>
         <Card className='bg-neutral-100/50 dark:bg-black/15 shadow-[0_0_30px_rgba(6,182,212,0.15)]'>

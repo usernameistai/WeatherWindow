@@ -135,7 +135,7 @@ const Favourites = ({ onSelectLocation }: FavouritesProps) => {
   return (
     <>
       <aside className="flex flex-col mx-auto max-w-6xl space-y-2 mt-5 mb-10 p-4 border-slate-300/60 dark:border-slate-800 rounded-lg bg-neutral-100/80 dark:bg-slate-950/80 backdrop-blur-md">
-        <div className="text-xs tracking-widest text-zinc-700/80 dark:text-cyan-400 uppercase mb-3 font-semibold">
+        <div className="text-xs tracking-[2px] text-zinc-700/80 dark:text-cyan-400 uppercase mb-3 font-mono font-semibold">
           My Favourite Cities / Places ({favourite.length})
         </div>
         <div className="space-y-2">

@@ -53,14 +53,14 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
 // 
   return (
     <>
-      <div className='flex justify-between items-center mb-2 mx-2 text-[#06b6d4] text-[10px] sm:text-[12px] font-mono tracking-wider'>
-        <span className='uppercase'>// SECURE SECTOR: {weather?.city?.name}-WEATHER-WINDOW</span>
+      <div className='flex justify-between items-center mb-2 mx-2 text-zinc-700/80 dark:text-[#06b6d4] text-[10px] sm:text-[12px] font-mono font-semibold tracking-[2px]'>
+        <span className='uppercase'>// SECTOR: {weather?.city?.name}-WEATHER-WINDOW</span>
         <span>STATUS: TEMP_UV</span>
       </div>
       <section className="relative flex flex-col pt-10 mb-15 p-5 rounded-[75px] bg-slate-200/50
         text-zinc-800/80 border-25 sm:border-35 border-neutral-300/70 dark:border-slate-900/70
         bg-clip-border backdrop-blur-md overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.15)]
-        min-h-[90vh]"
+        min-h-screen max-h-[125vh]"
       >
         <div aria-label="Background Image" className="absolute inset-0 z-0 overflow-hidden">
           {matchedCityCountryTheme && (
@@ -140,19 +140,19 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
           </section>
           
           <section aria-label="Detailed Variables" className="relative w-full sm:left-20 lg:left-0 max-w-xs sm:w-70 mt-4 sm:mt-2 font-semibold tracking-wide text-white md:text-zinc-800/80">
-            <details aria-label="Atmospheric Details" className={`${relLeft1} ${details}`}>
-              <summary className={`${flexRow} cursor-pointer text-lg font-bold`}><CloudSunIcon className="text-sky-300"/>Atmospheric</summary>
+            <details aria-label="Atmospheric Details" className={`group ${relLeft1} ${details}`}>
+              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300`}><CloudSunIcon className="text-sky-300"/>Atmospheric</summary>
               <div className={`${detailBulk}`}>
                 <div className={flexRow}><CloudIcon className="text-sky-300"/>  Cover: <div>{weather?.list[0].clouds.all}%</div></div>
                 <div>Probability of Precipitation {weather?.list[0].pop}%</div>
                 <div className={flexRow}><DropletsIcon className="text-sky-300"/>Humidity {weather?.list[0].main.humidity}%</div>
-                <div>Air Pressure {weather?.list[0].main.pressure}hPa</div>
+                <div>Air Pressure {weather?.list[0].main.pressure} hPa/mbar</div>
                 <div>
                   {Object.entries(weather?.list[0].main ?? {})
                     .filter(([key]) => key === "dew_point")
                     .map(([key, value]) => (
                       <div key={key} className={flexRow}>
-                        <DropletIcon className="text-sky-300"/>Dew Point : {value}°
+                        <DropletIcon className="text-sky-300"/>Dew Point : {value}°C
                       </div>
                     )
                   )}
@@ -160,8 +160,8 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
               </div>
             </details>
 
-            <details aria-label="Wind Details" className={`${relLeft1} ${details}`}>
-              <summary className={`${flexRow} cursor-pointer text-lg font-bold`}>
+            <details aria-label="Wind Details" className={`group ${relLeft1} ${details}`}>
+              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300`}>
                 <WindIcon className="text-green-300"/> Wind 
                 <LuTrees size={24} className="text-green-300"/>
               </summary>
@@ -175,20 +175,20 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
               </div>
             </details>
 
-            <details aria-label="Day or Night and Visibility" className={`${relLeft1} ${details}`}>
-              <summary className={`${flexRow} text-lg font-bold`}>
+            <details aria-label="Day or Night and Visibility" className={`group ${relLeft1} ${details}`}>
+              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300`}>
                 {weather?.list[0].sys.pod === "d" ? <SunIcon className="text-yellow-300"/> : <MoonStarIcon className="text-yellow-200"/>}
                 Light
               </summary>
               <div className={`${detailBulk}`}>
-                <div className="">Visibility {(weather?.list[0].visibility ?? 1000) / 1000}km</div>
+                <div className="">Visibility {(weather?.list[0].visibility ?? 1000) / 1000}km / {((weather?.list[0].visibility ?? 1000) / 1609).toFixed(1)}miles</div>
                 <div className={flexRow}><Sunrise className="text-yellow-300"/>{getTimeOfDay(weather?.city.sunrise)}</div>
                 <div className={flexRow}><Sunset className="text-orange-400"/>{getTimeOfDay(weather?.city.sunset)}</div>
               </div>
             </details>
 
-            <details aria-label="UV Index" className={`${relLeft1} ${details}`}>
-              <summary className={`${flexRow} text-lg font-bold`}><AudioWaveform className="text-yellow-300"/><span>UV-Index</span><span className="">{uvi?.now?.uvi}</span></summary>
+            <details aria-label="UV Index" className={`group ${relLeft1} ${details}`}>
+              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300`}><AudioWaveform className="text-yellow-300"/><span>UV-Index</span><span className="">{uvi?.now?.uvi}</span></summary>
               <div className={`${detailBulk}`}>
                 <UVAdvice uvi={uvi?.now?.uvi} />
               </div>
