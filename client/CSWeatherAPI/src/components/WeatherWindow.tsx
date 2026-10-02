@@ -86,7 +86,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         <section className="flex flex-col items-center sm:flex-row sm:items-start justify-between z-50 font-semibold mb-25">
           <section aria-label="Main Variables" className="relative flex-1 text-left ml-4 space-y-35 lg:left-3">
             <div aria-label="Location" 
-              className={`${relLeft} flex justify-start gap-2 mb-1 ${cityCountrySide === "city" ? "backdrop-blur-md rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%]" : ""}`}
+              className={`${relLeft} flex justify-start mx-auto sm:mx-0 w-[95%] gap-2 mb-1 ${cityCountrySide === "city" ? "backdrop-blur-md rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%]" : ""}`}
             >
               <div className={`${cityCountrySide === "city" ? "text-white" : ""} tracking-wider`}>
                 <span className="text-3xl sm:text-4xl">{location?.name}</span>, 
@@ -105,11 +105,11 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
               </div>
             </div>
 
-            <div aria-label="Country" className={`${relLeft} flex gap-5 mb-10 font-bold tracking-wider ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 w-[40%] sm:w-[35%] lg:w-[25%]" : ""}`}>
+            <div aria-label="Country" className={`${relLeft} flex gap-5 mb-10 ml-2 sm:ml-0 font-bold tracking-wider ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 w-[40%] sm:w-[35%] lg:w-[25%]" : ""}`}>
               <span>{location?.country}</span><span className="text-zinc-800/80">{simpleTime()}</span>
             </div>
             
-            <div aria-label="Temperature" className={`${relLeft} flex flex-row items-center ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[55%]" : ""}`}>
+            <div aria-label="Temperature" className={`${relLeft} flex flex-row items-center mx-auto sm:mx-0 w-[95%] ${cityCountrySide === "city" ? "text-white backdrop-blur-md rounded-lg px-4 py-2 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[55%]" : ""}`}>
               <div className="text-6xl sm:text-7xl">{weather?.list[0].main.temp.toFixed(1)}°</div>
               <div className="mx-5 hover:bg-white/10 hover:backdrop-blur-sm hover:rounded-xl hover:shadow-xl px-4 py-2 ">
                 <div className="text-base sm:text-lg text-zinc-800/80">Feels like {weather?.list[0].main.feels_like.toFixed(1)}°</div>
