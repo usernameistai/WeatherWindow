@@ -4,8 +4,10 @@ import { useWeather } from "@/utils/weatherApi";
 import type { LocationData } from "../utils/weather";
 import { 
   ChevronsDownIcon, ChevronsUpIcon, DropletsIcon, MouseIcon,
+  type MouseIconHandle,
   NavigationIcon, Trash2Icon, WindIcon 
 } from "@animateicons/react/lucide";
+import { useRef } from "react";
 
 interface FavouritesProps {
   onSelectLocation?: (location: LocationData) => void;
@@ -120,11 +122,18 @@ const FavoriteItem = ({
 const Favourites = ({ onSelectLocation }: FavouritesProps) => {
   const favourite = useFavouriteStore((state) => state.favourite);
   const removeFavourite = useFavouriteStore((state) => state.removeFavourite);
+  const mouseRef = useRef<MouseIconHandle>(null);
 
   if (favourite.length === 0) {
     return (
-      <div className="flex justify-center text-center dark:border dark:border-slate-800 rounded-lg dark:bg-slate-900/50 text-zinc-700/80 dark:text-slate-300/80 text-sm font-mono gap-2 p-5">
-        <MouseIcon size={30} className="flex items-center my-auto text-cyan-400 dark:text-cyan-100"/> 
+      <div className="flex justify-center text-center dark:border dark:border-slate-800 rounded-lg dark:bg-slate-900/50 text-zinc-700/80 dark:text-slate-300/80 text-sm font-mono gap-2 p-5"
+        onMouseEnter={() => mouseRef.current?.startAnimation()}
+        onMouseLeave={() => mouseRef.current?.stopAnimation()}
+      >
+        <MouseIcon size={30} 
+          className="flex items-center my-auto text-cyan-400 dark:text-cyan-100"
+          ref={mouseRef}
+        /> 
         <div className="flex my-auto">
           Click the map icon next to the country / state
         </div>

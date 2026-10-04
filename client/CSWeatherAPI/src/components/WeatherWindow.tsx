@@ -7,9 +7,12 @@ import WindDirections from "./WindDirections";
 import { 
   AudioWaveform, ChevronsDownIcon, ChevronsUpIcon, CloudIcon, CloudSunIcon,
   CompassIcon, DropletIcon, DropletsIcon, MapIcon, MoonStarIcon,
-  SunIcon, Sunrise, Sunset, WindIcon 
+  SunIcon, Sunrise, Sunset, WindIcon, 
+
 } from "@animateicons/react/lucide";
+import type {  AudioWaveformIconHandle, CloudSunIconHandle, MoonIconHandle, SunIconHandle, WindIconHandle } from "@animateicons/react/lucide";
 import { LuTrees } from "react-icons/lu";
+import { useRef } from "react";
 
 const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null, location: LocationData | null, uvi: UVWeatherProps | null }) => {
   const favourite = useFavouriteStore(state => state.favourite);
@@ -45,6 +48,10 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         return "Looks like a fine and sunny day!!!";
     }
   })();
+  const cloudSunRef = useRef<CloudSunIconHandle>(null);
+  const windRef = useRef<WindIconHandle>(null);
+  const sunMoonRef = useRef<MoonIconHandle | SunIconHandle | null>(null);
+  const audioRef = useRef<AudioWaveformIconHandle>(null);
   const flexRow = "flex flex-row gap-2";
   const details = "mb-4 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none rounded-lg px-4 py-2 sm:px-0 sm:py-0";
   const detailBulk = "relative right-0 sm:right-20 w-full hover:bg-white/25 backdrop-blur-md rounded-lg px-4 py-2 transition-all duration-200";
@@ -142,10 +149,13 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
           
           <section aria-label="Detailed Variables" className="relative w-full sm:left-20 lg:left-0 max-w-xs sm:w-70 mt-4 sm:mt-2 font-semibold tracking-wide text-white/90 md:text-zinc-800/80">
             <details aria-label="Atmospheric Details" className={`group ${relLeft1} ${details}`}>
-              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300
-              ${cityCountrySide === "city" ? "group-open:text-white/95" : ""}`}
+              <summary className={`${flexRow} group cursor-pointer text-lg font-bold group-open:text-cyan-300
+                ${cityCountrySide === "city" ? "group-open:text-white/95" : ""}`}
+                onMouseEnter={() => cloudSunRef.current?.startAnimation()}
+                onMouseLeave={() => cloudSunRef.current?.stopAnimation()}
               >
-                <CloudSunIcon className="text-sky-300"/>Atmospheric
+                <CloudSunIcon className="text-sky-300" ref={cloudSunRef} />
+                Atmospheric
               </summary>
               <div className={`${detailBulk}`}>
                 <div className={`${flexRow} ${detailsSolo}`}><CloudIcon className="text-sky-300"/>  Cover: <div>{weather?.list[0].clouds.all}%</div></div>
@@ -168,8 +178,10 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             <details aria-label="Wind Details" className={`group ${relLeft1} ${details}`}>
               <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300
                 ${cityCountrySide === "city" ? "group-open:text-white/95" : ""}`}
+                onMouseEnter={() => windRef.current?.startAnimation()}
+                onMouseLeave={() => windRef.current?.stopAnimation()}
               >
-                <WindIcon className="text-green-300"/> Wind 
+                <WindIcon className="text-green-300" ref={windRef} /> Wind 
                 <LuTrees size={24} className="text-green-300"/>
               </summary>
               <div className={`${detailBulk}`}>
@@ -185,8 +197,10 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             <details aria-label="Day or Night and Visibility" className={`group ${relLeft1} ${details}`}>
               <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300
                 ${cityCountrySide === "city" ? "group-open:text-white/95" : ""}`}
+                onMouseEnter={() => sunMoonRef.current?.startAnimation()}
+                onMouseLeave={() => sunMoonRef.current?.stopAnimation()}
               >
-                {weather?.list[0].sys.pod === "d" ? <SunIcon className="text-yellow-300"/> : <MoonStarIcon className="text-yellow-200"/>}
+                {weather?.list[0].sys.pod === "d" ? <SunIcon className="text-yellow-300" ref={sunMoonRef}/> : <MoonStarIcon className="text-yellow-200" ref={sunMoonRef} />}
                 Light
               </summary>
               <div className={`${detailBulk}`}>
@@ -199,8 +213,10 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             <details aria-label="UV Index" className={`group ${relLeft1} ${details}`}>
               <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300
                 ${cityCountrySide === "city" ? "group-open:text-white/95" : ""}`}
+                onMouseEnter={() => audioRef.current?.startAnimation()}
+                onMouseLeave={() => audioRef.current?.stopAnimation()}
               >
-                <AudioWaveform className="text-yellow-300"/>
+                <AudioWaveform className="text-yellow-300" ref={audioRef} />
                 <span>UV-Index</span><span className="">{uvi?.now?.uvi}</span>
               </summary>
               <div className={`${detailBulk}`}>
