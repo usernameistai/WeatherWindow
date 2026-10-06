@@ -67,10 +67,10 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
       </div>
       <section className="relative flex flex-col pt-10 mb-15 p-5 rounded-[75px] bg-slate-200/50
         text-zinc-800/80 border-25 sm:border-35 border-neutral-300/70 dark:border-slate-900/70
-        bg-clip-border backdrop-blur-md overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.15)]
+        bg-clip-border backdrop-blur-md overflow-hidden transform-gpu shadow-[0_0_30px_rgba(6,182,212,0.15)]
         min-h-screen max-h-[125vh]"
       >
-        <div aria-label="Background Image" className="absolute inset-0 -m-5 z-0 overflow-hidden rounded-[75px]">
+        <div aria-label="Background Image" className="absolute inset-0 -m-5 z-0 overflow-hidden rounded-[75px] transform-gpu">
           {matchedCityCountryTheme && (
             <>
               <img 
