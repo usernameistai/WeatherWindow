@@ -65,7 +65,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         <span className='uppercase'>// SECTOR: {weather?.city?.name}-WEATHER-WINDOW</span>
         <span>STATUS: TEMP_UV</span>
       </div>
-      <section className="relative flex flex-col pt-10 mb-15 p-5 rounded-[75px] bg-slate-200/50
+      <section className="relative flex flex-col pt-10 mb-15 p-5 rounded-[75px] 
         text-zinc-800/80 border-25 sm:border-35 border-neutral-300/70 dark:border-slate-900/70
         bg-clip-border backdrop-blur-md overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.15)]
         min-h-screen max-h-[125vh]"
