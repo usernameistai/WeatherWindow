@@ -65,9 +65,9 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         <span className='uppercase'>// SECTOR: {weather?.city?.name}-WEATHER-WINDOW</span>
         <span>STATUS: TEMP_UV</span>
       </div>
-      <section className="relative flex flex-col pt-10 mb-15 p-5 rounded-[75px] 
+      <section className="relative flex flex-col pt-10 mb-15 p-5 rounded-[75px] bg-slate-200/50
         text-zinc-800/80 border-25 sm:border-35 border-neutral-300/70 dark:border-slate-900/70
-        bg-clip-border backdrop-blur-md overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.15)]
+         backdrop-blur-md overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.15)]
         min-h-screen max-h-[125vh]"
       >
         <div aria-label="Background Image" className="absolute inset-0 z-0 overflow-hidden">
@@ -91,7 +91,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
           )}
         </div>
 
-        <section className="flex flex-col items-center sm:flex-row sm:items-start justify-between z-50 font-semibold mb-25">
+        <section className="flex flex-col items-center sm:flex-row sm:items-start justify-between z-50 font-semibold mb-25 overflow-hidden">
           <section aria-label="Main Variables" className="relative flex-1 text-left ml-4 space-y-35 lg:left-3">
             <div aria-label="Location" 
               className={`${relLeft} flex justify-start mx-auto sm:mx-0 w-[95%] gap-2 mb-1 ${cityCountrySide === "city" ? "backdrop-blur-md rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%]" : ""}`}
