@@ -11,7 +11,6 @@ import {
 
 } from "@animateicons/react/lucide";
 import type {  AudioWaveformIconHandle, CloudSunIconHandle, MoonIconHandle, SunIconHandle, WindIconHandle } from "@animateicons/react/lucide";
-import { LuTrees } from "react-icons/lu";
 import { useRef } from "react";
 
 const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null, location: LocationData | null, uvi: UVWeatherProps | null }) => {
@@ -52,12 +51,13 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
   const windRef = useRef<WindIconHandle>(null);
   const sunMoonRef = useRef<MoonIconHandle | SunIconHandle | null>(null);
   const audioRef = useRef<AudioWaveformIconHandle>(null);
+
   const flexRow = "flex flex-row gap-2";
   const details = "mb-4 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none rounded-lg px-4 py-2 sm:px-0 sm:py-0";
-  const detailBulk = "relative right-0 sm:right-20 w-full hover:bg-white/25 backdrop-blur-md rounded-lg px-4 py-2 transition-all duration-200";
+  const detailBulk = "relative right-0 sm:right-15 w-full hover:bg-black/10 backdrop-blur-md rounded-lg px-4 py-2 transition-all duration-200";
   const relLeft = "relative -left-2 sm:left-0";
   const relLeft1 = "relative -left-1.5 sm:left-0";
-  const detailsSolo = "hover:text-zinc-950/90 hover:font-semibold hover:translate-x-3 transition-colors transition-transform duration-200 ease-in-out";
+  const detailsSolo = "hover:text-white/95 hover:font-semibold hover:translate-x-2.5 transition-colors transition-transform duration-200 ease-in-out";
 // 
   return (
     <>
@@ -120,13 +120,13 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             <div aria-label="Temperature" className={`${relLeft} flex flex-row items-center mx-auto sm:mx-0 w-[95%] ${cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4 py-2 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[55%]" : ""}`}>
               <div className="text-6xl sm:text-7xl">{weather?.list[0].main.temp.toFixed(1)}°</div>
               <div className="mx-5 hover:bg-white/10 hover:backdrop-blur-sm hover:rounded-xl hover:shadow-xl px-4 py-2 ">
-                <div className="text-base sm:text-lg text-zinc-800/80">Feels like {weather?.list[0].main.feels_like.toFixed(1)}°</div>
+                <div className="text-base sm:text-lg text-zinc-800/80 text-center mx-auto">Feels like {weather?.list[0].main.feels_like.toFixed(1)}°</div>
                 <div className="flex text-base font-bold gap-2">
                   <div className="text-sky-700 flex justify-center">
-                    <ChevronsDownIcon size={20}/><div className="">{weather?.list[0].main.temp_min.toFixed(1)}</div>
+                    <ChevronsDownIcon size={20} className="translate-y-px items-center"/><div className="">{weather?.list[0].main.temp_min.toFixed(1)}</div>
                   </div>
                   <div className="text-rose-700 flex justify-center">
-                    <ChevronsUpIcon size={20}/><div className="">{weather?.list[0].main.temp_max.toFixed(1)}</div>
+                    <ChevronsUpIcon size={20} className="translate-y-px items-center"/><div className="">{weather?.list[0].main.temp_max.toFixed(1)}</div>
                   </div>
                 </div>
               </div>
@@ -149,7 +149,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
           
           <section aria-label="Detailed Variables" className="relative w-full sm:left-20 lg:left-0 max-w-xs sm:w-70 mt-4 sm:mt-2 font-semibold tracking-wide text-white/90 md:text-zinc-800/80">
             <details aria-label="Atmospheric Details" className={`group ${relLeft1} ${details}`}>
-              <summary className={`${flexRow} group cursor-pointer text-lg font-bold group-open:text-cyan-300
+              <summary className={`${flexRow} group cursor-pointer text-lg font-bold group-open:text-white/95
                 ${cityCountrySide === "city" ? "group-open:text-white/95" : ""}`}
                 onMouseEnter={() => cloudSunRef.current?.startAnimation()}
                 onMouseLeave={() => cloudSunRef.current?.stopAnimation()}
@@ -176,13 +176,13 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             </details>
 
             <details aria-label="Wind Details" className={`group ${relLeft1} ${details}`}>
-              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300
+              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-white/95
                 ${cityCountrySide === "city" ? "group-open:text-white/95" : ""}`}
                 onMouseEnter={() => windRef.current?.startAnimation()}
                 onMouseLeave={() => windRef.current?.stopAnimation()}
               >
                 <WindIcon className="text-green-300" ref={windRef} /> Wind 
-                <LuTrees size={24} className="text-green-300"/>
+                {/* <LuTrees size={24} className="text-green-300"/> */}
               </summary>
               <div className={`${detailBulk}`}>
                 <div className={`${flexRow} ${detailsSolo}`}>
@@ -195,7 +195,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             </details>
 
             <details aria-label="Day or Night and Visibility" className={`group ${relLeft1} ${details}`}>
-              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300
+              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-white/95
                 ${cityCountrySide === "city" ? "group-open:text-white/95" : ""}`}
                 onMouseEnter={() => sunMoonRef.current?.startAnimation()}
                 onMouseLeave={() => sunMoonRef.current?.stopAnimation()}
@@ -211,7 +211,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             </details>
 
             <details aria-label="UV Index" className={`group ${relLeft1} ${details}`}>
-              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-cyan-300
+              <summary className={`${flexRow} cursor-pointer text-lg font-bold group-open:text-white/95
                 ${cityCountrySide === "city" ? "group-open:text-white/95" : ""}`}
                 onMouseEnter={() => audioRef.current?.startAnimation()}
                 onMouseLeave={() => audioRef.current?.stopAnimation()}
