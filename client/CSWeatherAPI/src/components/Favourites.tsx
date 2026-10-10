@@ -1,13 +1,16 @@
+import { useRef } from "react";
 import { useFavouriteStore } from "../stores/store";
-import dailyAverages from '../utils/dailyAverages';
 import { useWeather } from "@/utils/weatherApi"; 
+import dailyAverages from '../utils/dailyAverages';
 import type { LocationData } from "../utils/weather";
 import { 
-  ChevronsDownIcon, ChevronsUpIcon, DropletsIcon, MouseIcon,
-  type MouseIconHandle,
-  NavigationIcon, Trash2Icon, WindIcon 
+ ChevronsDownIcon, ChevronsUpIcon, DropletsIcon, MouseIcon, 
+ NavigationIcon, Trash2Icon, WindIcon
 } from "@animateicons/react/lucide";
-import { useRef } from "react";
+import type {
+  ChevronDownIconHandle, ChevronUpIconHandle, DropletsIconHandle, 
+  MouseIconHandle, WindIconHandle
+} from "@animateicons/react/lucide";
 
 interface FavouritesProps {
   onSelectLocation?: (location: LocationData) => void;
@@ -29,6 +32,10 @@ const FavoriteItem = ({
   const weathVar = weatherVar?.weather?.[0];
   const weatherDesc = weathVar?.description;
   const dailyAggregates = weather ? dailyAverages(weather?.list) : {};
+  const chevDownRef = useRef<ChevronDownIconHandle>(null);
+  const chevUpRef = useRef<ChevronUpIconHandle>(null);
+  const dropsRef = useRef<DropletsIconHandle>(null);
+  const windRef = useRef<WindIconHandle>(null);
 
   return (
     <>
@@ -54,11 +61,17 @@ const FavoriteItem = ({
             <div className="mx-5 sm:mx-10 text-xs text-center px-4 py-2 ">
               <div className="text-slate-400">Feels like {mainVar?.feels_like.toFixed(1)}°</div>
               <div className="flex font-bold gap-2 text-[11px] sm:text-xs">
-                <div className="text-sky-600 flex justify-center">
-                  <ChevronsDownIcon size={15}/><div className="">{mainVar?.temp_min.toFixed(1)}</div>
+                <div className="text-sky-600 flex justify-center"
+                  onMouseEnter={() => chevDownRef.current?.startAnimation()}
+                  onMouseLeave={() => chevDownRef.current?.stopAnimation()}
+                >
+                  <ChevronsDownIcon size={15} ref={chevDownRef}/><div className="">{mainVar?.temp_min.toFixed(1)}</div>
                 </div>
-                <div className="text-rose-600 flex justify-center">
-                  <ChevronsUpIcon size={15}/><div className="">{mainVar?.temp_max.toFixed(1)}</div>
+                <div className="text-rose-600 flex justify-center"
+                  onMouseEnter={() => chevUpRef.current?.startAnimation()}
+                  onMouseLeave={() => chevUpRef.current?.stopAnimation()}
+                >
+                  <ChevronsUpIcon size={15} ref={chevUpRef}/><div className="">{mainVar?.temp_max.toFixed(1)}</div>
                 </div>
               </div>
             </div>
@@ -78,15 +91,21 @@ const FavoriteItem = ({
               const aggregate = dailyAggregates[date];
 
               return (
-                <div key={date} className="hidden sm:flex flex-col items-center my-2
+                <div key={date} className="hidden sm:flex flex-col justify-start my-auto
                   gap-1 text-[11px] pt-2 sm:w-full sm:justify-center"
                 >
-                  <div className="flex items-center gap-1">
-                    <DropletsIcon className="text-sky-500" size={13} />
+                  <div className="flex items-center gap-1"
+                    onMouseEnter={() => dropsRef.current?.startAnimation()}
+                    onMouseLeave={() => dropsRef.current?.stopAnimation()}
+                  >
+                    <DropletsIcon className="text-sky-500" size={13} ref={dropsRef}/>
                     <span className="text-zinc-700/80 dark:text-slate-100">{aggregate.averageHumidity.toFixed(0)}%</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <WindIcon className="text-emerald-500" size={13} />
+                  <div className="flex items-center gap-1"
+                    onMouseEnter={() => windRef.current?.startAnimation()}
+                    onMouseLeave={() => windRef.current?.stopAnimation()}
+                  >
+                    <WindIcon className="text-emerald-500" size={13} ref={windRef}/>
                     <span className="text-zinc-700/80 dark:text-slate-100">{aggregate.averageWindSpeed.toFixed(1)}ms<sup>-1</sup></span>
                   </div>
                 </div>

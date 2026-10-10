@@ -91,7 +91,6 @@ const FiveDayForecast = ({ weather }: WeatherProps) => {
                   </div>
                 </div>
               </Hover>
-
             </div>
           );
         })}
