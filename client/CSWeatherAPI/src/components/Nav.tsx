@@ -12,19 +12,20 @@ const Nav = ({ children }: {children: ReactNode}) => {
   return (
     <>
       <header className="relative text-zinc-800/90 dark:text-neutral-100">
-        <nav className="grid grid-cols-[auto_1fr_auto] sm:grid-cols-[1fr_auto_1fr] justify-between items-center gap-10 sm:gap-37
-         py-2.5 font-semibold border-b border-zinc-800/80 dark:border-neutral-200/30"
+        <nav className="grid grid-cols-[auto_minmax(0,1fr)_auto] sm:grid-cols-[1fr_minmax(0,3fr)_1fr]
+          justify-between items-center gap-5 py-2.5 font-semibold
+          border-b border-zinc-800/80 dark:border-neutral-200/30"
         >
           <div className="flex flex-row items-center">
             <img 
               src="./weatherwindow-cropped.webp" 
               alt="Weather Window Icon"
-              className="relative left-2 w-11 sm:w-12.5"
+              className="relative left-2 w-11 sm:w-12.5 mr-px"
             />
-            <span className="relative hidden sm:flex left-0 sm:left-5 tracking-wide">Weather Window</span>
+            <span className="relative sm:mr-px text-base hidden sm:flex left-0 scale-y-125 scale-x-95 font-mono">WeatherWindoW</span>
           </div>
             
-          <div className="flex justify-center items-center w-full">
+          <div className="flex justify-center items-center min-w-0 w-full scale-95 sm:scale-100">
             {children}  
           </div>
           
