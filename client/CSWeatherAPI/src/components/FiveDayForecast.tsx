@@ -11,8 +11,8 @@ const FiveDayForecast = ({ weather }: WeatherProps) => {
   return (
     <>
       <div className='relative top-5 flex justify-between items-center mb-2 mx-5 text-zinc-700/80 dark:text-[#06b6d4] text-[10px] sm:text-[12px] font-mono font-semibold tracking-[2px] max-w-6xl'>
-        <span className='uppercase'>// SECTOR: {weather?.city?.name}-5-DAY-FORECAST</span>
-        <span>STATUS: ACTIVE_CYCLE</span>
+        <span className='uppercase'>// SECTOR: {weather?.city?.name}-5-DAY</span>
+        <span>STATUS: FORECAST_CYCLE</span>
       </div>
       <section aria-label="5 day forecast" className="grid grid-cols-1 sm:grid-cols-5 gap-4 p-5 max-w-6xl mx-auto">
         {Object.keys(dailyAggregates).slice(0, 5).map((date) => {

@@ -1,3 +1,4 @@
+@import url('https://googleapis.com');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -5,6 +6,13 @@
 
 /* 👈 Tell Tailwind v4 to look for the .dark class on the <html> tag */
 @custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+  /* --font-logo: 'Geist', sans-serif; */
+  /* --font-logo: 'Outfit', sans-serif; */
+  --font-logo: 'Bitcount Ink', sans-serif;
+}
 
 /* --- LOADER COMPONENT --- */
 .frontier-loader { position: relative; width: 160px; height: 160px; }
@@ -185,4 +193,77 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+.bitcount-ink-bitcountink {
+  font-family: "Bitcount Ink", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0,
+    "SZP1" 0,
+    "SZP2" 0,
+    "XPN1" 0,
+    "XPN2" 0,
+    "YPN1" 0,
+    "YPN2" 0;
+}
+
+.iceberg-regular {
+  font-family: "Iceberg", sans-serif;
+  /* font-weight: 500; */
+  font-style: normal;
+}
+
+.ubuntu-light {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ubuntu-regular {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ubuntu-medium {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.ubuntu-bold {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ubuntu-light-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ubuntu-regular-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ubuntu-medium-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ubuntu-bold-italic {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: italic;
 }

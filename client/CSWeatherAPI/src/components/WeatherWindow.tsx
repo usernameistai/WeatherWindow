@@ -70,8 +70,8 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
   return (
     <>
       <div className='flex justify-between items-center mb-2 mx-2 text-zinc-700/80 dark:text-[#06b6d4] text-[10px] sm:text-[12px] font-mono font-semibold tracking-[2px]'>
-        <span className='uppercase'>// SECTOR: {weather?.city?.name}-WEATHER-WINDOW</span>
-        <span>STATUS: TEMP_UV</span>
+        <span className='uppercase'>// SECTOR: {weather?.city?.name}-WEATHER</span>
+        <span>STATUS: WIND_LIGHT_UV</span>
       </div>
       <section className="relative flex flex-col pt-10 mb-15 p-5 rounded-[75px] bg-slate-200/50
         text-zinc-800/80 border-25 sm:border-35 border-neutral-300/70 dark:border-slate-900/70
@@ -124,11 +124,17 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
               </div>
             </div>
 
-            <div aria-label="Country" className={`${relLeft} flex gap-5 mb-10 ml-2 sm:ml-0 font-bold tracking-wider ${cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4 py-2 w-[40%] sm:w-[35%] lg:w-[25%]" : ""}`}>
+            <div aria-label="Country" 
+              className={`${relLeft} flex gap-5 mb-10 ml-2 sm:ml-0 font-bold tracking-wider 
+              ${cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4 py-2 w-[40%] sm:w-[35%] lg:w-[25%]" : ""}
+            `}>
               <span>{location?.country}</span><span className="text-zinc-800/80">{simpleTime()}</span>
             </div>
             
-            <div aria-label="Temperature" className={`${relLeft} flex flex-row items-center mx-auto sm:mx-0 w-[95%] ${cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4 py-2 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[55%]" : ""}`}>
+            <div aria-label="Temperature" 
+              className={`${relLeft} flex flex-row items-center mx-auto sm:mx-0 w-[95%] 
+              ${cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4 py-2 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[55%]" : ""}
+            `}>
               <div className="text-6xl sm:text-7xl">{weather?.list[0].main.temp.toFixed(1)}°</div>
               <div className="mx-5 hover:bg-white/10 hover:backdrop-blur-sm hover:rounded-xl hover:shadow-xs px-4 py-2 ">
                 <div className="text-base sm:text-lg text-zinc-800/80 text-center mx-auto hover:animate-pulse">Feels like {weather?.list[0].main.feels_like.toFixed(1)}°</div>

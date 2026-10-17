@@ -10,10 +10,6 @@ const Favourites = lazy(() => import("./components/Favourites"));
 const FiveDayForecast = lazy(() => import("./components/FiveDayForecast"));
 const WeatherChart = lazy(() => import("./components/WeatherChart"));
 const WeatherMap = lazy(() => import("./components/WeatherMap"));
-// import Favourites from "./components/Favourites";
-// import FiveDayForecast from "./components/FiveDayForecast";
-// import WeatherChart from "./components/WeatherChart";
-// import WeatherMap from "./components/WeatherMap";
 import { useThemeStore } from "./stores/store";
 import { useLocation, useUVIData, useWeather } from "./utils/weatherApi";
 import { weatherWindowTheme } from "./utils/weatherUtils";
@@ -22,7 +18,7 @@ const WeatherLoader = ({ message = "ANALYSING DATA..." }: { message?: string }) 
   <div className="flex flex-col items-center justify-center p-8 text-[#06b6d4] font-mono text-xs tracking-widest animate-pulse">
     <span>// {message}</span>
   </div>
-)
+);
 
 const App = () => {
   const [city, setCity] = useState<string>("london");
@@ -56,41 +52,6 @@ const App = () => {
       img.onerror = handleImageLoad; // Fallback so a failed load doesn't lock the counter
     });
   }, []);
-  // useEffect(() => {
-  //   if ('scrollRestoration' in window.history) {
-  //     window.history.scrollRestoration = 'manual';
-  //   }
-  //   let loadedCount = 0;
-  //   let timeoutId: number | undefined = undefined;
-
-  //   const handleImageLoad = () => {
-  //     loadedCount++;
-  //     if (loadedCount === preload_images.length) {
-  //       // setIsLoading(false);
-        
-  //       timeoutId = window.setTimeout(() => {
-  //         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  //         window.scrollTo({
-  //           top: 0,
-  //           behavior: prefersReducedMotion ? 'instant' : 'smooth',
-  //         });
-  //       }, 0);
-  //     }
-  //   };
-
-  //   preload_images.forEach((src) => {
-  //     const img = new Image();
-  //     img.src = src;
-  //     img.onload = handleImageLoad;
-  //     img.onerror = handleImageLoad;
-  //   });
-
-  //   return () => {
-  //     if (timeoutId) {
-  //       window.clearTimeout(timeoutId ?? 0);
-  //     }
-  //   };
-  // }, []);
   {/* Location useEffect */}
   useEffect(() => {
     const latLon = async () => {
@@ -117,7 +78,8 @@ const App = () => {
       <>
         <div role="status" aria-live="polite" aria-label="Loading Crypto Data"
           className="fixed inset-0 w-screen h-screen bg-neutral-900/80 
-          flex flex-col items-center justify-center z-200 text-white">
+          flex flex-col items-center justify-center z-200 text-white"
+        >
           <p className="animate-pulse font-mono tracking-[0.3em] uppercase mb-4">
             Syncing Weather Data...
           </p>
