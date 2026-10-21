@@ -1,7 +1,7 @@
 # 🛡️ weather-window // BACKEND SECURE CORE
 > **Status:** `SECURE` | **Node Type:** `REVERSE_PROXY_GATEWAY`
 
-![.NET](https://img.shields.io/badge/Runtime-.NET_8.0-512BD4?style=flat&logo=dotnet&logoColor=white)
+![.NET](https://img.shields.io/badge/Runtime-.NET_10.0-512BD4?style=flat&logo=dotnet&logoColor=white)
 ![C#](https://img.shields.io/badge/Language-C%23-239120?style=flat&logo=csharp&logoColor=white)
 ![Security](https://img.shields.io/badge/Architecture-API_Key_Proxy-00599C?style=flat)
 
