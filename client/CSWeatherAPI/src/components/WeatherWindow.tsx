@@ -68,7 +68,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
   const relLeft = "relative -left-2 sm:left-0";
   const relLeft1 = "relative -left-1.5 sm:left-0";
   const detailsSolo = "justify-between hover:text-white/95 hover:font-semibold hover:translate-x-1.5 transition-colors transition-transform duration-200 ease-in-out";
-  const bottomClass = "hidden sm:flex flex-row items-center justify-between relative overflow-hidden my-2 p-3 px-5 py-3 rounded-2xl border-t-6 border-l-6 bg-linear-to-r from-white/15 via-black/10 to-white/15 backdrop-blur-xl text-white/90 text-base sm:text-lg font-semibold tracking-wide hover:bg-white/25"
+  const bottomClass = "hidden sm:flex flex-row items-center justify-between relative overflow-hidden my-2 p-3 px-5 py-3 rounded-2xl border-t-8 border-l-8 border-white/25 bg-linear-to-r from-white/25 via-black/15 to-white/25 backdrop-blur-xl text-white/90 text-base sm:text-lg font-semibold tracking-wide hover:bg-white/25"
 // 
   return (
     <>

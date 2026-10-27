@@ -42,14 +42,14 @@ const WeatherChange = ({ weather }: { weather: WeatherData | null }) => {
   return (
     <>
       <section aria-label="Severe Weather Warning" className="w-full max-w-3xl mx-auto px-4 py-2 my-3">
-        <div className="relative overflow-hidden rounded-2xl bg-linear-to-r
-        from-natural-950/70 via-natural-900/50 to-natural-950/50 border-t-6 border-l-6 border-natural-500/60 
-        shadow-natural-700/80 backdrop-blur-xl px-5 py-3 flex 
+        <div className="relative -top-20 sm:-top-0 overflow-hidden rounded-2xl bg-linear-to-r
+        from-white/15 via-black/10 to-white/15 border-t-6 border-l-6 border-white/25 
+        shadow-white/35 backdrop-blur-xl px-5 py-3 flex 
         items-center justify-between text-natural-100 backdrop-blur-sm">
           
           {/* Pulsing warning accent line */}
-          <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-white/20 animate-pulse" />
-          <div className="absolute left-0 top-0 bottom-0 w-full h-1.5 bg-white/20 animate-pulse" />
+          <div className="absolute rounded-xl left-0 top-0 bottom-0 w-1.5 bg-white/20 animate-pulse" />
+          <div className="absolute rounded-xl left-0 top-0 bottom-0 w-full h-1.5 bg-white/20 animate-pulse" />
 
           <div className="flex items-center space-x-3 pl-2">
             <span className="flex h-3 w-3 relative">
@@ -57,14 +57,14 @@ const WeatherChange = ({ weather }: { weather: WeatherData | null }) => {
               <span className="relative inline-flex rounded-full h-3 w-3 bg-white/40"></span>
             </span>
             <div>
-              <p className="text-[10px] sm:text-xs uppercase tracking-widest text-natural-400 font-bold">Incoming Weather</p>
+              <p className="text-[11px] sm:text-xs uppercase tracking-widest text-natural-400 font-bold">Incoming Weather</p>
               <p className="text-xs sm:text-base font-semibold tracking-wide">
                 <span className="capitalize text-white underline decoration-natural-500 underline-offset-4">{desc}</span>
               </p>
             </div>
           </div>
 
-          <div className="items-right pl-2 sm:pl-4">
+          <div className="pl-2 sm:pl-4 text-center justify-center items-center my-auto">
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-natural-300/80 block">T-Minus</span>
             <span className="font-mono text-base sm:text-lg font-bold text-white tracking-tight">
               {timeStr}
