@@ -67,7 +67,7 @@ const WeatherChange = ({ weather }: { weather: WeatherData | null }) => {
           <div className="pl-2 sm:pl-4 text-center justify-center items-center my-auto">
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-natural-300/80 block">T-Minus</span>
             <span className="font-mono text-base sm:text-lg font-bold text-white tracking-tight">
-              {timeStr}
+              {timeStr} 
             </span>
           </div>
 
