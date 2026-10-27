@@ -2,6 +2,7 @@ import type { LocationData, UVWeatherProps, WeatherData } from "../utils/weather
 import { getTimeOfDay, simpleTime, weatherWindowTheme } from "../utils/weatherUtils";
 import { useCityCountrySideStore, useFavouriteStore } from "@/stores/store";
 import UVAdvice from "./UVAdvice";
+import WeatherChange from "./WeatherChange";
 import WeatherWarning from "./WeatherWarning";
 import WindDirections from "./WindDirections";
 import { 
@@ -69,7 +70,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
 // 
   return (
     <>
-      <div className='flex justify-between items-center mb-2 mx-2 text-zinc-700/80 dark:text-[#06b6d4] text-[10px] sm:text-[12px] font-mono font-semibold tracking-[2px]'>
+      <div className='flex justify-between items-center my-2 mx-2 text-zinc-700/80 dark:text-[#06b6d4] text-[10px] sm:text-[12px] font-mono font-semibold tracking-[2px]'>
         <span className='uppercase'>// SECTOR: {weather?.city?.name}-WEATHER</span>
         <span>STATUS: WIND_LIGHT_UV</span>
       </div>
@@ -100,9 +101,9 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         </div>
 
         <section className="flex flex-col items-center sm:flex-row sm:items-start justify-between z-50 font-semibold mb-25">
-          <section aria-label="Main Variables" className="relative flex-1 text-left ml-4 space-y-35 lg:left-3">
+          <section aria-label="Main Variables" className="relative flex-1 text-left ml-4 space-y-25 lg:left-3">
             <div aria-label="Location" 
-              className={`${relLeft} flex justify-start mx-auto sm:mx-0 w-[95%] gap-2 mb-1 ${cityCountrySide === "city" ? "backdrop-blur-md hover:bg-black/5 rounded-lg px-4 py-2 sm:w-[80%] lg:w-[55%] transition-colors duration-200 ease-in-out" : ""}`}
+              className={`${relLeft} flex justify-start mx-auto sm:mx-0 w-[95%] gap-2 mb-1 ${cityCountrySide === "city" ? "backdrop-blur-md hover:bg-black/5 rounded-lg px-4 py-2 sm:w-[85%] lg:w-[60%] transition-colors duration-200 ease-in-out" : ""}`}
               onMouseEnter={() => mapRef.current?.startAnimation()}
               onMouseLeave={() => mapRef.current?.stopAnimation()}
             >
@@ -125,15 +126,15 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
             </div>
 
             <div aria-label="Country" 
-              className={`${relLeft} flex gap-5 mb-10 ml-2 sm:ml-0 font-bold tracking-wider 
-              ${cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4 py-2 w-[40%] sm:w-[35%] lg:w-[25%]" : ""}
+              className={`${relLeft} flex gap-5 mb-10 ml-2 sm:ml-0 font-bold tracking-wider
+              ${cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4 py-2 w-[40%] sm:w-[35%] lg:w-[25%] hover:bg-black/5" : ""}
             `}>
               <span>{location?.country}</span><span className="text-zinc-800/80">{simpleTime()}</span>
             </div>
             
             <div aria-label="Temperature" 
               className={`${relLeft} flex flex-row items-center mx-auto sm:mx-0 w-[95%] 
-              ${cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4 py-2 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[55%]" : ""}
+              ${cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4 py-2 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[55%] hover:bg-black/5" : ""}
             `}>
               <div className="text-6xl sm:text-7xl">{weather?.list[0].main.temp.toFixed(1)}°</div>
               <div className="mx-5 hover:bg-white/10 hover:backdrop-blur-sm hover:rounded-xl hover:shadow-xs px-4 py-2 ">
@@ -157,7 +158,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
 
             <div aria-label="Weather Status" 
               className={`${relLeft} flex flex-row font-bold rounded-lg mb-4 backdrop-blur-sm  
-                px-4 py-2 sm:py-0 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[35%] ${
+                px-4 py-2 sm:py-0 mx-auto sm:mx-0 w-[95%] sm:w-[80%] lg:w-[55%] ${
                 cityCountrySide === "city" ? "text-white/95 backdrop-blur-md rounded-lg px-4" : ""
               }`}
             >
@@ -258,12 +259,16 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         <section aria-label="Weather Warning" className="z-999 items-center text-center mx-auto w-full">
           {weatherAlert && (
             <div className={
-              `my-2 p-3 rounded-xl hover:bg-white/35 backdrop-blur-md text-white/90 text-base sm:text-lg font-semibold tracking-wide `}
+              `my-2 p-3 rounded-xl hover:bg-white/25 backdrop-blur-md text-white/90 text-base sm:text-lg font-semibold tracking-wide 
+              relative overflow-hidden rounded-2xl bg-linear-to-r from-white/15 via-black/10 to-white/15 border-t-6 border-l-6 
+               backdrop-blur-xl px-5 py-3 flex items-center justify-between backdrop-blur-sm`}
             >
               {weatherAlert}
             </div>
           )}
-          <WeatherWarning weather={weather} />
+          
+          <WeatherChange weather={weather ?? null} />
+          <WeatherWarning weather={weather ?? null} />
         </section>
       </section>
     </>

@@ -25,7 +25,7 @@ const Nav = ({ children }: {children: ReactNode}) => {
             <span className="relative left-1 text-xl lg:text-2xl iceberg-regular font-normal tracking-tight sm:mr-px hidden sm:flex">WeatherWindoW</span>
           </div>
             
-          <div className="flex justify-center items-center min-w-0 w-full scale-95 sm:scale-100">
+          <div className="flex mx-auto justify-center items-center min-w-0 w-full sm:w-125 lg:w-300 scale-95 sm:scale-100">
             {children}  
           </div>
           

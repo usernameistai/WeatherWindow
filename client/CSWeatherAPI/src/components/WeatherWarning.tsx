@@ -11,13 +11,9 @@ const WeatherWarning = ({ weather }: { weather: WeatherData | null }) => {
     if (!id) return false;
     return (
       (id >= 200 && id < 300) ||
-      id === 511 ||
-      [502, 503, 504, 522].includes(id) ||
-      id === 601 ||
-      id === 602 ||
-      id === 762 ||
-      id === 771 ||
-      id === 781
+      id === 502 || id === 503 || id === 504 || id === 522 || id === 511 ||
+      id === 601 || id === 602 || id === 622 ||
+      id === 762 || id === 771 || id === 781
     );
   };
 
