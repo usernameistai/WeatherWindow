@@ -36,13 +36,13 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
     const { id, description } = base;
     switch (true) {
       case id >= 200 && id < 300: 
-        return `Looks like there will be a ${description}`;
+        return `Looks like there is a ${description}`;
       case id >= 300 && id < 400: 
-        return `Looks like there will be a bit of ${description}`;
+        return `Looks like there is a bit of ${description}`;
       case id >= 500 && id < 600: 
-        return `I'd expect some ${description}`;
+        return `Currently ${description}`;
       case id >= 600 && id < 700: 
-        return `Looks like there will be some ${description} today. Build a snowman, go sledging or have a snowball fight..`;
+        return `Looks like there is some ${description} today. Build a snowman, go sledging or have a snowball fight..`;
       case id >= 700 && id < 800: 
        return `Looks like ${description}'s occurring in the atmosphere, run for shelter!!`;
       case id >= 801 && id <= 804: 
@@ -59,6 +59,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
   const sunMoonRef = useRef<MoonIconHandle | SunIconHandle | null>(null);
   const audioRef = useRef<AudioWaveformIconHandle>(null);
 
+  const topClass = "relative flex flex-col pt-10 mb-15 p-5 rounded-[75px] bg-slate-200/50 text-zinc-800/80 border-25 sm:border-35 border-neutral-300/70 dark:border-slate-900/70 bg-clip-border backdrop-blur-md overflow-hidden transform-gpu shadow-[0_0_30px_rgba(6,182,212,0.15)] min-h-screen max-h-[125vh]"
   const flexRow = "flex flex-row items-center gap-2";
   const flexRow1 = "flex flex-row gap-2 justify-start";
   const flexRow2 = "flex items-center justify-center gap-2";
@@ -67,6 +68,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
   const relLeft = "relative -left-2 sm:left-0";
   const relLeft1 = "relative -left-1.5 sm:left-0";
   const detailsSolo = "justify-between hover:text-white/95 hover:font-semibold hover:translate-x-1.5 transition-colors transition-transform duration-200 ease-in-out";
+  const bottomClass = "hidden sm:flex flex-row items-center justify-between relative overflow-hidden my-2 p-3 px-5 py-3 rounded-2xl border-t-6 border-l-6 bg-linear-to-r from-white/15 via-black/10 to-white/15 backdrop-blur-xl text-white/90 text-base sm:text-lg font-semibold tracking-wide hover:bg-white/25"
 // 
   return (
     <>
@@ -74,10 +76,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
         <span className='uppercase'>// SECTOR: {weather?.city?.name}-WEATHER</span>
         <span>STATUS: WIND_LIGHT_UV</span>
       </div>
-      <section className="relative flex flex-col pt-10 mb-15 p-5 rounded-[75px] bg-slate-200/50
-        text-zinc-800/80 border-25 sm:border-35 border-neutral-300/70 dark:border-slate-900/70
-        bg-clip-border backdrop-blur-md overflow-hidden transform-gpu shadow-[0_0_30px_rgba(6,182,212,0.15)]
-        min-h-screen max-h-[125vh]"
+      <section className={`${topClass}`}
       >
         <div aria-label="Background Image" className="absolute inset-0 -m-5 z-0 overflow-hidden rounded-[75px] transform-gpu">
           {matchedCityCountryTheme && (
@@ -258,11 +257,7 @@ const WeatherWindow = ({ weather, location, uvi }: { weather: WeatherData | null
 
         <section aria-label="Weather Warning" className="z-999 items-center text-center mx-auto w-full">
           {weatherAlert && (
-            <div className={
-              `my-2 p-3 rounded-xl hover:bg-white/25 backdrop-blur-md text-white/90 text-base sm:text-lg font-semibold tracking-wide 
-              relative overflow-hidden rounded-2xl bg-linear-to-r from-white/15 via-black/10 to-white/15 border-t-6 border-l-6 
-               backdrop-blur-xl px-5 py-3 flex items-center justify-between backdrop-blur-sm`}
-            >
+            <div className={`${bottomClass}`}>
               {weatherAlert}
             </div>
           )}
